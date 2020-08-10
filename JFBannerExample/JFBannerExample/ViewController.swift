@@ -36,7 +36,7 @@ class ViewController: UIViewController, BannerViewDataSource, BannerViewDelegate
         
         bannerView2.registerCell(BannerCell2.self)
         bannerView2.itemSpacing = 0
-        bannerView2.scaleRate = 2
+        bannerView2.scaleRate = 1
         bannerView2.isScrollEnabled = false
         bannerView2.direction = .vertical
         bannerView2.dataSource = self
@@ -46,7 +46,7 @@ class ViewController: UIViewController, BannerViewDataSource, BannerViewDelegate
         
         bannerView3.registerCell(BannerCell.self)
         bannerView3.itemSize = CGSize(width: 300, height: 200)
-        bannerView3.scaleRate = 2
+        bannerView3.scaleRate = 1
         bannerView3.dataSource = self
         bannerView3.delegate = self
         bannerView3.reloadData()
