@@ -11,7 +11,7 @@
 #### 使用`cocoaPods`:
 
 ```
-pod 'JFPagingFlowLayout'
+pod 'JFBanner'
 ```
 
 #### 使用`swift package manager`:

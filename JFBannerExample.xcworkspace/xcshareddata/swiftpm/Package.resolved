@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "JFBanner",
+        "repositoryURL": "https://github.com/hxwxww/JFBanner.git",
+        "state": {
+          "branch": null,
+          "revision": "ac79da884aa3c45e4b2182fcaca81ce54045004c",
+          "version": "0.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
