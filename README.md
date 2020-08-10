@@ -4,7 +4,7 @@
 
 ## 截图
 
-![image](screenshots/screenshot.gif)
+![image](https://github.com/hxwxww/JFBanner/raw/master/screenshots/screenshot.gif)
 
 ## 导入:
 
