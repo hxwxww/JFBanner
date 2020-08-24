@@ -207,7 +207,6 @@ open class BannerView: UIView {
 extension BannerView {
     
     private func setup() {
-        translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1)
         
         layout = BannerLayout()

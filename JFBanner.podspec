@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name            = 'JFBanner'
-  s.version         = '0.0.1'
+  s.version         = '0.0.2'
   s.summary         = 'A simple way to use BannerView'
 
   s.homepage        = 'https://github.com/hxwxww/JFBanner'

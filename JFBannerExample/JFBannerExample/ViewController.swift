@@ -16,6 +16,11 @@ class ViewController: UIViewController, BannerViewDataSource, BannerViewDelegate
     @IBOutlet weak var bannerView3: BannerView!
     @IBOutlet weak var bannerView4: BannerView!
     
+    @IBOutlet weak var contentView: UIView!
+    
+    private var bannerView5: BannerView!
+
+    
     private let colors: [UIColor] = [.red, .orange, .yellow, .green, .cyan, .blue, .purple]
     
     private let texts = [
@@ -57,6 +62,14 @@ class ViewController: UIViewController, BannerViewDataSource, BannerViewDelegate
         bannerView4.dataSource = self
         bannerView4.delegate = self
         bannerView4.reloadData()
+        
+        bannerView5 = BannerView(frame: CGRect(x: 0, y: 730, width: view.bounds.width, height: 200))
+        bannerView5.registerCell(BannerCell.self)
+        bannerView5.itemSize = CGSize(width: 100, height: 200)
+        bannerView5.dataSource = self
+        bannerView5.delegate = self
+        bannerView5.reloadData()
+        contentView.addSubview(bannerView5)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,6 +77,7 @@ class ViewController: UIViewController, BannerViewDataSource, BannerViewDelegate
         bannerView.startAutoScroll()
         bannerView2.startAutoScroll()
         bannerView3.startAutoScroll()
+        bannerView5.startAutoScroll()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -71,6 +85,7 @@ class ViewController: UIViewController, BannerViewDataSource, BannerViewDelegate
         bannerView.stopAutoScroll()
         bannerView2.stopAutoScroll()
         bannerView3.stopAutoScroll()
+        bannerView5.stopAutoScroll()
     }
     
     func numberOfItems(in bannerView: BannerView) -> Int {
