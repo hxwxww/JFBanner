@@ -56,8 +56,8 @@ class BannerLayout: UICollectionViewFlowLayout {
     private func transformLayoutAttributes(_ attributes: BannerAttributes) -> UICollectionViewLayoutAttributes {
         
         let alphaFactor: CGFloat
-        let finalFrame: CGRect
-        
+        let transform: CGAffineTransform
+         
         switch scrollDirection {
         case .horizontal:
             let centerX = contentView.contentOffset.x + insetX + itemSize.width / 2
@@ -66,12 +66,13 @@ class BannerLayout: UICollectionViewFlowLayout {
             // 计算缩放比例
             // 如果scaleRate = 0.7 缩放比例为 ... 0.49 <- 0.7 <- 1 -> 0.7 -> 0.49 ...
             let scaleFactor = pow(scaleRate, abs(offsetFactor))
-            let scaleFrame = attributes.frame.scale(byX: scaleFactor, y: scaleFactor)
+
             // 计算平移距离
             // 当前算法平移距离只是约等于itemSpacing，如果有更好的计算方法，请联系我，谢谢！
             let translationX = -(attributes.frame.width * (1 - scaleFactor) / 2) * offsetFactor
             
-            finalFrame = scaleFrame.translation(byX: translationX, y: 0)
+            transform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor).concatenating(CGAffineTransform(translationX: translationX, y: 0))
+            
             alphaFactor = 1 - (abs(offsetFactor) * (1 - alphaRate))
             attributes.centerX = attributes.center.x
         case .vertical:
@@ -80,10 +81,11 @@ class BannerLayout: UICollectionViewFlowLayout {
             let offsetFactor = itemOffset / (itemSize.height + itemSpacing)
             
             let scaleFactor = pow(scaleRate, abs(offsetFactor))
-            let scaleFrame = attributes.frame.scale(byX: scaleFactor, y: scaleFactor)
+
             let translationY = -(attributes.frame.height * (1 - scaleFactor) / 2) * offsetFactor
             
-            finalFrame = scaleFrame.translation(byX: 0, y: translationY)
+            transform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor).concatenating(CGAffineTransform(translationX: 0, y: translationY))
+
             alphaFactor = 1 - (abs(offsetFactor) * (1 - alphaRate))
             attributes.centerY = attributes.center.y
         @unknown default:
@@ -91,7 +93,7 @@ class BannerLayout: UICollectionViewFlowLayout {
         }
         
         attributes.alpha = max(0.3, alphaFactor)
-        attributes.frame = finalFrame
+        attributes.transform = transform
         
         return attributes
     }
